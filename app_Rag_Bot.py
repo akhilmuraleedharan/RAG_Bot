@@ -1,7 +1,7 @@
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
+import os
 import sqlite3
 import streamlit as st
 from langchain_community.document_loaders import PyPDFLoader
@@ -12,10 +12,11 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.prompts import ChatPromptTemplate
-
+import google.generativeai as genai  
 from dotenv import load_dotenv
 load_dotenv()
-
+api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=api_key)
 st.title("Rag Q/A Bot for Pdf files")
 
 st.sidebar.text("This is an RAG Q/A Bot to answer questions related to uploaded document in the pdf format!!!")
