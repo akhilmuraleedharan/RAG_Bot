@@ -46,7 +46,7 @@ if uploaded_file :
 
     query = st.chat_input("Say Something")
     prompt = query
-    llm =  ChatGoogleGenerativeAI(model =  "gemini-1.5-pro", temperature=0.3,max_tokens=500)
+    llm =  ChatGoogleGenerativeAI(model =  "gemini-1.5-flash", temperature=0.3,max_tokens=500)
 
     system_prompt = (
         "You are an assistant for question answer tasks"
